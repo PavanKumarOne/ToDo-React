@@ -4,6 +4,7 @@ import { TodoList } from "../TodoList/TodoList";
 import { Navbar} from "../../organisms/Navbar/Navbar";
 import { Context } from "../../Context/Context";
 import "./Todo.css";
+import { Droppable } from "react-beautiful-dnd";
 
 
 export const ToDo = () => {
@@ -45,15 +46,24 @@ export const ToDo = () => {
     return (
         <>
             <Navbar />
-            <TodoItem />
-            <div className="todo">
-                {
-                    data && data.map(e => {
-                        {/* console.log("e = ",e); */}
-                        return <TodoList key={e.id} ele={e} {...e} handleDelete={handleDelete} handleToggle={handleToggle}/>
-                    })
-                }
-            </div>
+            <Droppable droppableId="TodosList">
+            {
+                (provided) => (
+                    <>
+                <TodoItem />
+                <div className="todo" ref={provided.innerRef} {...provided.droppableProps}>
+                    {
+                        data && data.map((e,index) => {
+                            {/* console.log("e = ",e); */}
+                            return <TodoList key={e.id} index={index} ele={e} {...e} handleDelete={handleDelete} handleToggle={handleToggle}/>
+                        })
+                    }
+                 {provided.placeholder}
+                </div>
+                    </>
+                )
+            }
+            </Droppable>
         </>
     )
 }
