@@ -3,6 +3,7 @@ import { TodoItem } from "../TodoItem/TodoItem";
 import { TodoList } from "../TodoList/TodoList";
 import { Navbar} from "../../organisms/Navbar/Navbar";
 import { Context } from "../../Context/Context";
+import "./Todo.css";
 
 
 export const ToDo = () => {
@@ -45,7 +46,7 @@ export const ToDo = () => {
         <>
             <Navbar />
             <TodoItem />
-            <div>
+            <div className="todo">
                 {
                     data && data.map(e => {
                         {/* console.log("e = ",e); */}

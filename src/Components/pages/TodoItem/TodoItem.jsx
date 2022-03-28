@@ -1,6 +1,8 @@
 import { v4 as uuid} from "uuid";
 import React, { useState,useContext } from "react";
 import { Context } from "../../Context/Context";
+import "./TodoItem.css"
+import { CustomButton } from "../../atoms/Button/Button";
 
 let obj = {
     title : "",
@@ -30,9 +32,9 @@ export const TodoItem = () => {
    
 
     return (
-        <>
+        <div className="inp">
             <input type="text" placeholder = "Add Todo" onChange={handleChange} />  
-            <button onClick={handleAdd}>Add</button>      
-        </>
+            <CustomButton onClick={handleAdd}>Add</CustomButton> 
+        </div>
     )
 }

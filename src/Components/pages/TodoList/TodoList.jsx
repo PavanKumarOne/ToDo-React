@@ -1,4 +1,5 @@
 import React from "react";
+import { CustomButton } from "../../atoms/Button/Button";
 
 export const TodoList = ({ele,title,id,status,handleToggle,handleDelete}) => {
     // console.log(title,id,status);
@@ -11,8 +12,8 @@ export const TodoList = ({ele,title,id,status,handleToggle,handleDelete}) => {
     return (
         <>
             <h1 style={strike}>{title}</h1>
-            <button onClick={() => handleToggle(ele)}>{status ? "Done" : "Not Done"}</button>
-            <button onClick={() => handleDelete(id)}>Delete</button>
+            <CustomButton onClick={() => handleToggle(ele)}>{status ? "Done" : "Not Done"}</CustomButton>
+            <CustomButton onClick={() => handleDelete(id)}>Delete</CustomButton>           
         </>
     )
 }
